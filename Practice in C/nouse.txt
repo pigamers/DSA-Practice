@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+void append();
+void addatstart();
+void addanywhere();
+
+struct dabba *root = NULL;
+
+struct dabba{
+    int data;
+    struct dabba *nextdabba;
+};
+
+void main()
+{
+    root = (struct dabba *)malloc(sizeof(struct dabba));
+
+    if (root == NULL)
+    {
+        printf("Out of Memory!!\n");
+    }
+    else
+    {
+        printf("Memory allocate hogaya!!\n");
+
+        while (1)
+        {
+            int ch;
+            printf("Enter your choice: \n");
+            printf("1.Append\n2.Add at start\n3.Add anywhere\n4.Exit\n");
+            scanf("%d",&ch);
+            switch (ch)
+            {
+            case 1:
+                append();
+                break;
+            case 2:
+                addatstart();
+                break;
+            case 3:
+                addanywhere();
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("wrong choice\n");
+                break;
+            }
+        }
+        
+    }
+}
+
+void append()
+{
+    struct dabba *temp;
+    
+    temp = (struct dabba *)malloc(sizeof(struct dabba));
+    
+    printf("\nEnter the element to be appended : ");
+    scanf("%d", &temp->data);
+    printf("line no 63\n");
+    temp->nextdabba = NULL;
+    printf("line no 65\n");
+    if (root == NULL)
+    {
+        root=temp;
+        printf("line no 69\n");
+    } else {
+        struct dabba* ptr=root;
+        while (ptr->nextdabba != NULL)
+        {
+            ptr = ptr->nextdabba;
+        }   
+        ptr->nextdabba = temp;
+    }
+    printf("Element %d Appended Successfully!\n", temp->data);
+}
+
+void addatstart(){
+    printf("in addstart");
+
+}
+void addanywhere(){
+    printf("in anywhere");
+}
